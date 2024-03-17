@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    restart: always
+    command:
+      - --config=/etc/otelcol-contrib/otel-collector.yml
+    volumes:
+      - ./otel-collector-contrib-config.yaml:/etc/otelcol-contrib/otel-collector.yml
+    depends_on:
+      - zipkin
+  zipkin:
+    image: openzipkin/zipkin:latest
+    restart: always
+    ports:
+      - "9411:9411"
+  simpleapi:
+    image: simpleapi
+    restart: always
+    ports:
+      - "4500:4500"
+    depends_on:
+      - otel-collector
+      - simpleservice
+  simpleservice:
+    image: simpleservice
+    restart: always
+    depends_on:
+      - otel-collector

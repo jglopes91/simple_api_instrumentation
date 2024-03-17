@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: api
+server:
+  port: 4500
+url:
+  externalAPI: http://localhost:4501
