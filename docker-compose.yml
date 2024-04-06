@@ -6,7 +6,7 @@ services:
     command:
       - --config=/etc/otelcol-contrib/otel-collector.yml
     volumes:
-      - ./otel-collector-contrib-config.yaml:/etc/otelcol-contrib/otel-collector.yml
+      - ./otel-collector-contrib-config.yaml:/etc/otelcol-contrib/otel-collector.yml:Z
     depends_on:
       - zipkin
   zipkin:
