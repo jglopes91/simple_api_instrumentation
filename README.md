@@ -1,7 +1,5 @@
 # OpenTelemetry Spring API Instrumentation Project
 
-![OpenTelemetry Logo](https://opentelemetry.io/img/logo-colour.svg)
-
 Welcome to the OpenTelemetry Spring API Instrumentation project! This project aims to explore the instrumentation of a Java API with Spring, utilizing the OpenTelemetry collector and agent to work their magic. All of this is set up within a complete Podman environment. As my primary distribution is Fedora, adjustments may be needed in the startup script [build_and_run.sh] for switching from Podman to Docker.
 
 ## Getting Started
