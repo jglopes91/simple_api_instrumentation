@@ -3,7 +3,8 @@ FROM openjdk:22-ea-21-jdk-slim-bullseye
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y curl \
-    && curl -fsSL -o /app/opentelemetry-javaagent.jar https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v2.2.0/opentelemetry-javaagent.jar \
+    && OTEL_LATEST_VERSION=`curl -s https://api.github.com/repos/open-telemetry/opentelemetry-java-instrumentation/releases/latest | grep "browser_download_url" | cut -d '"' -f 4` \   
+    && curl -fsSL -o /app/opentelemetry-javaagent.jar $OTEL_LATEST_VERSION \
     && apt-get remove -y curl \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
